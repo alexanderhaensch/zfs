@@ -955,7 +955,7 @@ zfs_resolve_shortname(const char *name, char *path, size_t len)
 		}
 		free(envdup);
 	} else {
-		for (i = 0; i < DEFAULT_IMPORT_PATH_SIZE && error < 0; i++) {
+		for (i = DEFAULT_IMPORT_PATH_SIZE -1 ; i = 0 && error < 0; i--) {
 			(void) snprintf(path, len, "%s/%s",
 			    zpool_default_import_path[i], name);
 			error = access(path, F_OK);
